@@ -26,14 +26,17 @@
 }
 
 - (void)testExample {
+    NSDecimalNumber *decimal = [NSDecimalNumber decimalNumberWithString:@"9.05"];
+    
     NSDictionary* specification = @{
                                     @"amount" : @{
-                                            @"amount" : @9.3,
-                                            @"amountFormatted" : @"9.03"
+                                            @"amount" : decimal,
+                                            @"amountFormatted" : @"9.05"
                                             }
                                     };
     
     SampleDTO *dto = [[SampleDTO alloc] initWithDictionary:specification];
+    NSLog(@"%@ %@", dto.amount ,dto.amountFormatted);
     XCTAssertEqualObjects([dto.amount stringValue], dto.amountFormatted);
 }
 
